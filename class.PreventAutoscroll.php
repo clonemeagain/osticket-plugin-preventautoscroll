@@ -5,13 +5,15 @@ require_once ('config.php');
 /**
  * The goal of this Plugin is to inject a slim javascript function at the end of the page, overriding the default scrolling function.
  * That's it. A lot of boilerplate for a simple script.
- * 
- * YOU DON'T NEED THIS PLUGIN, if you are willing to edit core, simply open /scp/js/thread.js find 
- * line 21     <code>scrollTo: function (entry) {</code>
+ *
+ * YOU DON'T NEED THIS PLUGIN, if you are willing to edit core, simply open /scp/js/thread.js find
+ * line 21 <code>scrollTo: function (entry) {</code>
  * And append <code>return;</code> to it. Done.
- * 
+ *
  * If, like me, you are concerned about future updates requiring you to re-edit core over and over again, then, by all means, please use
- * this plugin. 
+ * this plugin.
+ * 
+ * This doesn't work with $ost->addExtraHeader(<script>), because we want it to run AFTER the other code.. not before. :-|
  */
 class PreventAutoscrollPlugin extends Plugin {
 	var $config_class = 'PreventAutoscrollPluginConfig';
@@ -42,6 +44,7 @@ class PreventAutoscrollPlugin extends Plugin {
 			$dom = new DOMDocument ();
 			$script = $dom->createElement ( 'script' );
 			$script->setAttribute ( 'type', 'text/javascript' );
+			$script->setAttribute('name', 'Plugin: Prevent Autoscroll');
 			
 			// Write our script.. if it was more complicated, we would put it in an external file and pull it in.
 			// If we had this hosted on our server in another place, we wouldn't need this, just set:
@@ -82,7 +85,7 @@ SCRIPT;
 					] 
 			);
 			
-			// Connect to the attachment_previews plugin and send the structures. :-)
+			// Connect to the attachment_previews plugin and send the structure. :-)
 			Signal::send ( 'attachments.wrapper', $this, $signal_structure );
 		}
 	}
