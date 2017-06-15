@@ -38,17 +38,7 @@ var thread = {
        if (!entry) return;
 
        var frame = 0;
-       $('html, body').animate({
-            scrollTop: entry.offset().top - 50,
-       }, {
-            duration: 400,
-            step: function(now, fx) {
-                // Recalc end target every few frames
-                if (++frame % 6 == 0)
-                    fx.end = entry.offset().top - 50;
-            }
-        });
-    },
+... snip ...
 ```
 
 Modify it to:
@@ -67,16 +57,5 @@ var thread = {
 
        if (!entry) return;
 
-       var frame = 0;
-       $('html, body').animate({
-            scrollTop: entry.offset().top - 50,
-       }, {
-            duration: 400,
-            step: function(now, fx) {
-                // Recalc end target every few frames
-                if (++frame % 6 == 0)
-                    fx.end = entry.offset().top - 50;
-            }
-        });
-    },
+... snip ...
 ```
