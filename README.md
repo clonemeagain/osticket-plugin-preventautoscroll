@@ -11,14 +11,14 @@ That plugin exposes an API that lets other plugins edit the output of osTicket b
 
 ## How to enable
 
-* Download this plugin into your /include/plugins folder, I use osticket-plugin-preventautoscroll as a foldername, but you can call it whatever you wish. 
+* Download and unzip this plugin into your /include/plugins folder [v1.0 zip](https://github.com/clonemeagain/osticket-plugin-preventautoscroll/archive/v1.0.zip) [v1.0 gzip](https://github.com/clonemeagain/osticket-plugin-preventautoscroll/archive/v1.0.tar.gz)
 * Use an admin account to visit /scp/plugins.php (Admin Panel => Manage => Plugins)
 * Select "Add new Plugin"
 * Press "Install" next to "Prevent Autoscroll" 
 * Click the checkbox next to "Prevent Autoscroll" 
 * From the "More dropdown" select "Enable"
 
-Now test by visiting a ticket, due to pjax, you might need to refresh the page.
+Now test by visiting a ticket, due to pjax, you might need to refresh the page. The only change should be that the viewport no longer scrolls to the last thread entry. All other functionality should still work, let me know if it doesn't.
 
 
 ## This plugin is not actually required
